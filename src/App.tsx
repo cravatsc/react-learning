@@ -1,34 +1,54 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ExpenseItem from './components/ExpenseItem';
+import { ExpenseItem, Expense } from './components/ExpenseItem';
 
-function App1() {
+const App1 = () => (
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        Edit <code>src/App.tsx</code> and save to reload.....
+      </p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
+    </header>
+  </div>
+);
+
+const App = () => {
+  const expenseArray: Expense[] = [
+    {
+      title: 'Monitor',
+      amount: 475,
+      date: new Date(2021, 11, 28),
+    },
+    {
+      title: 'Keyboard',
+      amount: 75,
+      date: new Date(2021, 11, 27),
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.....
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Let's get started!!</h2>
+      <p>This is also visible</p>
+      {expenseArray.map((expense) => (
+        <ExpenseItem
+          title={expense.title}
+          date={expense.date}
+          amount={expense.amount}
+        />
+      ))}
     </div>
   );
-}
-
-const App = () => 
-    <div className="App">
-        <h2>Let's get started!!</h2>
-        <p>This is also visible</p>
-        <ExpenseItem></ExpenseItem>
-    </div>
+};
 
 export default App;
