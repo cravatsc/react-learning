@@ -1,3 +1,4 @@
+import { Card } from './Card';
 import { ExpenseItem, Expense } from './ExpenseItem';
 import './ExpenseList.css';
 
@@ -7,7 +8,7 @@ interface ExpensesProps {
 
 export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {expenses.map((expense) => (
         <ExpenseItem
           title={expense.title}
@@ -15,6 +16,6 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
           amount={expense.amount}
         />
       ))}
-    </div>
+    </Card>
   );
 };
