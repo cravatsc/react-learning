@@ -27,7 +27,7 @@ const App = () => {
   const expenseArray: Expense[] = [
     {
       title: 'Monitor',
-      amount: 475,
+      amount: 475.15,
       date: new Date(2021, 11, 28),
     },
     {
