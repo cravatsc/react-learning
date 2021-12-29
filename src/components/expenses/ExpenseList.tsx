@@ -1,4 +1,4 @@
-import { Card } from '../Card';
+import { Card } from '../ui/Card';
 import { ExpenseItem, Expense } from './ExpenseItem';
 import './ExpenseList.css';
 
