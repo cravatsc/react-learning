@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card } from '../ui/Card';
 import { ExpenseDate } from './ExpenseDate';
 import './ExpenseItem.css';
@@ -9,13 +10,22 @@ export interface Expense {
 }
 
 export const ExpenseItem: React.FC<Expense> = ({ title, date, amount }) => {
+  //use state returns the value of title and a function to change the val
+  //best naming convention for using state and deconstructed props
+  const [titleState, setTitle] = useState(title);
+
+  const clickHandler = () => {
+    setTitle('Updated!');
+  };
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2>{titleState}</h2>
         <div className="expense-item__price">${amount}</div>
       </div>
+      <button onClick={clickHandler}>change title</button>
     </Card>
   );
 };
