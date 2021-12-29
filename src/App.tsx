@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { ExpenseItem, Expense } from './components/expenses/ExpenseItem';
 import { ExpenseList } from './components/expenses/ExpenseList';
+import { NewExpense } from './components/newexpense/NewExpense';
 
 const App1 = () => (
   <div className="App">
@@ -39,8 +40,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h2>Let's get started!!</h2>
-      <p>This is also visible</p>
+      <NewExpense />
       <ExpenseList expenses={expenseArray} />
     </div>
   );
