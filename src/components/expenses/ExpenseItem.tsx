@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card } from '../Card';
 import { ExpenseDate } from './ExpenseDate';
 import './ExpenseItem.css';
 

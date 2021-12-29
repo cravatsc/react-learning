@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { ExpenseItem, Expense } from './components/ExpenseItem';
-import { ExpenseList } from './components/ExpenseList';
+import { ExpenseItem, Expense } from './components/expenses/ExpenseItem';
+import { ExpenseList } from './components/expenses/ExpenseList';
 
 const App1 = () => (
   <div className="App">
