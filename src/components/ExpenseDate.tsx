@@ -1,3 +1,5 @@
+import './ExpenseDate.css';
+
 export interface ExpenseCalendar {
   date: Date;
 }
@@ -7,10 +9,10 @@ export const ExpenseDate: React.FC<ExpenseCalendar> = ({ date }) => {
   const day = date.toLocaleString('en-US', { day: '2-digit' });
   const year = date.getFullYear();
   return (
-    <div>
-      <div>{month}</div>
-      <div>{day}</div>
-      <div>{year}</div>
+    <div className="expense-date">
+      <div className="expense-date__month">{month}</div>
+      <div className="expense-date__day">{day}</div>
+      <div className="expense-date__year">{year}</div>
     </div>
   );
 };
