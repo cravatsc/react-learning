@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ExpenseItem, Expense } from './components/ExpenseItem';
+import { ExpenseList } from './components/ExpenseList';
 
 const App1 = () => (
   <div className="App">
@@ -40,13 +41,7 @@ const App = () => {
     <div className="App">
       <h2>Let's get started!!</h2>
       <p>This is also visible</p>
-      {expenseArray.map((expense) => (
-        <ExpenseItem
-          title={expense.title}
-          date={expense.date}
-          amount={expense.amount}
-        />
-      ))}
+      <ExpenseList expenses={expenseArray} />
     </div>
   );
 };
