@@ -36,11 +36,11 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
 
   const amountChangedHandler = (event: any) => {
     //event.target.value is always a string
-    setEnteredAmount(event.target.value);
+    setEnteredAmount(+event.target.value);
   };
 
   const dateChangedHandler = (event: any) => {
-    setEnteredDate(event.target.value);
+    setEnteredDate(new Date(event.target.value));
   };
 
   const submitHandler = (event: any) => {
@@ -87,7 +87,7 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
             min="2019-01-01"
             max="2022-12-31"
             onChange={dateChangedHandler}
-            value={enteredDate.toString()}
+            value={enteredDate?.toISOString().split('T')[0]}
           />
         </div>
       </div>
