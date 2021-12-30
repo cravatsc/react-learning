@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Expense } from '../expenses/ExpenseItem';
 import './ExpenseForm.css';
 
-export const ExpenseForm: React.FC = () => {
+interface ExpenseFormProps {
+  onSaveExpenseData: (expenseData: Expense) => void;
+}
+
+export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   //default to string because reading from the event is a string
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -47,7 +51,9 @@ export const ExpenseForm: React.FC = () => {
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
+    //calling function passed through via props - this will give parent access to child data
+    //common pattern for communicating between components, and communicating up to the parent component
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
