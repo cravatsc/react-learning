@@ -2,10 +2,14 @@ import { Expense } from '../expenses/ExpenseItem';
 import { ExpenseForm } from './ExpenseForm';
 import './NewExpense.css';
 
-export const NewExpense: React.FC = () => {
+interface NewExpenseProps {
+  onAddExpense: (expense: Expense) => void;
+}
+
+export const NewExpense: React.FC<NewExpenseProps> = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData: Expense) => {
     const expenseData = { ...enteredExpenseData, id: Math.random().toString() };
-    console.log(expenseData);
+    props.onAddExpense(expenseData);
   };
 
   return (
