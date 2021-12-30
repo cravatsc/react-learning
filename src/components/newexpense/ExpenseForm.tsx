@@ -7,6 +7,24 @@ export const ExpenseForm: React.FC = () => {
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
+  //alternative we can have three states, grouping together states
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
+  // });
+
+  //when updating a state requiring previous state do the following isntead
+  //rather than this
+  // setUserInput({
+  //   ...userInput,
+  //   enteredTitle: event.target.value,
+  // });
+  //do this to guarantee that the latest state's snapshot is used as the prev stat
+  // setUserInput((prevState) => {
+  //   return { ...prevState, enteredTitle: event.target.value };
+  // });
+
   const titleChangeHandler = (event: any) => {
     setEnteredTitle(event.target.value);
   };
