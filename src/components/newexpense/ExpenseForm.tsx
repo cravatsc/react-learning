@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Expense } from '../expenses/ExpenseItem';
 import './ExpenseForm.css';
 
 export const ExpenseForm: React.FC = () => {
@@ -38,8 +39,18 @@ export const ExpenseForm: React.FC = () => {
     setEnteredDate(event.target.value);
   };
 
+  const submitHandler = (event: any) => {
+    //prevents the default submit activity which would submit the form to the server and reload the page - which is not what we want with SPA
+    event.preventDefault();
+    const expenseData: Expense = {
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
+    };
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
