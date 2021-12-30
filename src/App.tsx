@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ExpenseItem, Expense } from './components/expenses/ExpenseItem';
@@ -38,16 +38,18 @@ const App = () => {
     },
   ];
 
+  const [expenses, setExpenses] = useState<Array<Expense>>(expenseArray);
+
   const addExpenseHandler = (expense: Expense) => {
     console.log('in app.js');
     console.log(expense);
-    expenseArray.push(expense);
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
   };
 
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpenseList expenses={expenseArray} />
+      <ExpenseList expenses={expenses} />
     </div>
   );
 };
