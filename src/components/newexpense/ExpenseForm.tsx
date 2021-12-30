@@ -3,14 +3,16 @@ import './ExpenseForm.css';
 
 export const ExpenseForm: React.FC = () => {
   const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState(0);
-  const [enteredDate, setEnteredDate] = useState(Date.now());
+  //default to string because reading from the event is a string
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event: any) => {
     setEnteredTitle(event.target.value);
   };
 
   const amountChangedHandler = (event: any) => {
+    //event.target.value is always a string
     setEnteredAmount(event.target.value);
   };
 
