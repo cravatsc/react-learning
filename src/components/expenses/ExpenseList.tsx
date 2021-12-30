@@ -9,11 +9,12 @@ interface ExpensesProps {
 export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
   return (
     <Card className="expenses">
-      {expenses.map((expense) => (
+      {expenses.map((expense, index) => (
         <ExpenseItem
           title={expense.title}
           date={expense.date}
           amount={expense.amount}
+          key={index}
         />
       ))}
     </Card>
