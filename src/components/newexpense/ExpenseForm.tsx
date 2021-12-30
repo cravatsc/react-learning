@@ -7,10 +7,10 @@ interface ExpenseFormProps {
 }
 
 export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState('');
-  //default to string because reading from the event is a string
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState<string>('');
+  //default to string because reading from the event is a string <- not needed with typescript generics
+  const [enteredAmount, setEnteredAmount] = useState<number>(0);
+  const [enteredDate, setEnteredDate] = useState<Date>(new Date());
 
   //alternative we can have three states, grouping together states
   // const [userInput, setUserInput] = useState({
@@ -55,8 +55,8 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
     //common pattern for communicating between components, and communicating up to the parent component
     props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredAmount(0);
+    setEnteredDate(new Date());
   };
 
   return (
@@ -87,7 +87,7 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
             min="2019-01-01"
             max="2022-12-31"
             onChange={dateChangedHandler}
-            value={enteredDate}
+            value={enteredDate.toString()}
           />
         </div>
       </div>
