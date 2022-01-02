@@ -41,8 +41,8 @@ const App = () => {
   const [expenses, setExpenses] = useState<Array<Expense>>(expenseArray);
 
   const addExpenseHandler = (expense: Expense) => {
-    console.log('in app.js');
-    console.log(expense);
+    //by passing data into this handler, we are "lifting state" up to the parent component
+    //so that we can use it in other child components
     setExpenses((prevExpenses) => [...prevExpenses, expense]);
   };
 
