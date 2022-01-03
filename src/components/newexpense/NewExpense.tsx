@@ -4,6 +4,7 @@ import './NewExpense.css';
 
 interface NewExpenseProps {
   onAddExpense: (expense: Expense) => void;
+  cancelAddExpense: () => void;
 }
 
 export const NewExpense: React.FC<NewExpenseProps> = (props) => {
@@ -12,9 +13,16 @@ export const NewExpense: React.FC<NewExpenseProps> = (props) => {
     props.onAddExpense(expenseData);
   };
 
+  const cancelHandler = () => {
+    props.cancelAddExpense();
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm
+        onSaveExpenseData={saveExpenseDataHandler}
+        cancelAddExpense={cancelHandler}
+      />
     </div>
   );
 };

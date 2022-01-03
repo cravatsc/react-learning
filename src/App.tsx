@@ -53,12 +53,26 @@ const App = () => {
   const addExpenseHandler = (expense: Expense) => {
     //by passing data into this handler, we are "lifting state" up to the parent component
     //so that we can use it in other child components
-    setExpenses((prevExpenses) => [expense, ...prevExpenses]);
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+    setAddExpense((prevAddExpense) => !prevAddExpense);
+  };
+
+  const [addExpense, setAddExpense] = useState<boolean>(false);
+
+  const changeExpenseScreen = () => {
+    setAddExpense((prevAddExpense) => !prevAddExpense);
   };
 
   return (
     <div className="App">
-      <NewExpense onAddExpense={addExpenseHandler} />
+      {addExpense ? (
+        <NewExpense
+          onAddExpense={addExpenseHandler}
+          cancelAddExpense={changeExpenseScreen}
+        />
+      ) : (
+        <button onClick={changeExpenseScreen}>Add New Expense</button>
+      )}
       <Expenses expenses={expenses} />
     </div>
   );

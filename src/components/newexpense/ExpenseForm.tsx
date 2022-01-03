@@ -4,6 +4,7 @@ import './ExpenseForm.css';
 
 interface ExpenseFormProps {
   onSaveExpenseData: (expenseData: Expense) => void;
+  cancelAddExpense: () => void;
 }
 
 export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
@@ -59,6 +60,13 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
     setEnteredDate(new Date());
   };
 
+  const cancelHandler = () => {
+    setEnteredTitle('');
+    setEnteredAmount(0);
+    setEnteredDate(new Date());
+    props.cancelAddExpense();
+  };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -92,6 +100,7 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={cancelHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
