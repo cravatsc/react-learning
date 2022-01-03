@@ -36,6 +36,16 @@ const App = () => {
       amount: 75,
       date: new Date(2021, 11, 27),
     },
+    {
+      title: 'Desk',
+      amount: 215.99,
+      date: new Date(2022, 0, 2),
+    },
+    {
+      title: 'Mouse',
+      amount: 25.25,
+      date: new Date(2022, 0, 3),
+    },
   ];
 
   const [expenses, setExpenses] = useState<Array<Expense>>(expenseArray);
