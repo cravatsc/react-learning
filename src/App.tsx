@@ -43,7 +43,7 @@ const App = () => {
   const addExpenseHandler = (expense: Expense) => {
     //by passing data into this handler, we are "lifting state" up to the parent component
     //so that we can use it in other child components
-    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+    setExpenses((prevExpenses) => [expense, ...prevExpenses]);
   };
 
   return (
