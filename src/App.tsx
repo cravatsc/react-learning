@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ExpenseItem, Expense } from './components/expenses/ExpenseItem';
-import { ExpenseList } from './components/expenses/ExpenseList';
+import { Expenses } from './components/expenses/Expenses';
 import { NewExpense } from './components/newexpense/NewExpense';
 
 const App1 = () => (
@@ -49,7 +49,7 @@ const App = () => {
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpenseList expenses={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 };

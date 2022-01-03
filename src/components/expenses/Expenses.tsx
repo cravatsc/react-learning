@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { ExpenseFilter } from '../filter/ExpenseFilter';
 import { Card } from '../ui/Card';
 import { ExpenseItem, Expense } from './ExpenseItem';
-import './ExpenseList.css';
+import './Expenses.css';
+import { ExpensesList } from './ExpensesList';
 
 interface ExpensesProps {
   expenses: Expense[];
 }
 
-export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
+export const Expenses: React.FC<ExpensesProps> = ({ expenses }) => {
   const [filteredYear, setFilteredYear] = useState<number>(2022);
 
   const filterYearHandler = (year: number) => {
@@ -19,24 +20,16 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
     (expense) => expense.date.getFullYear() === filteredYear
   );
 
+  //can store jsx in a variable
+  let expenseContent = <p>No Expenses found for {filteredYear}</p>;
+
   return (
     <Card className="expenses">
       <ExpenseFilter
         selectedYear={filteredYear}
         onChangeYear={filterYearHandler}
       />
-      {filteredExpenses.length === 0 && (
-        <p>No Expenses found for {filteredYear}</p>
-      )}
-      {filteredExpenses.length > 0 &&
-        filteredExpenses.map((expense, index) => (
-          <ExpenseItem
-            title={expense.title}
-            date={expense.date}
-            amount={expense.amount}
-            key={index} //w/o key, we are adding an expense to the end and then updating each items and updating the contents - with key we will not do this process. We could potentially lose state w/o key
-          />
-        ))}
+      <ExpensesList filteredYear={filteredYear} expenses={filteredExpenses} />
     </Card>
   );
 };
