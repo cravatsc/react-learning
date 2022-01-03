@@ -7,12 +7,8 @@ interface ExpenseFilterProps {
 }
 
 export const ExpenseFilter: React.FC<ExpenseFilterProps> = (props) => {
-  const [filteredYear, setFilteredYear] = useState<number>(2022);
-
   const filterExpenseHandler = (event: any) => {
-    const year = +event.target.value;
-    setFilteredYear(year);
-    props.onChangeYear(year);
+    props.onChangeYear(+event.target.value);
   };
 
   return (
