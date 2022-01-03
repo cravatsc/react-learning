@@ -25,14 +25,18 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
         selectedYear={filteredYear}
         onChangeYear={filterYearHandler}
       />
-      {filteredExpenses.map((expense, index) => (
-        <ExpenseItem
-          title={expense.title}
-          date={expense.date}
-          amount={expense.amount}
-          key={index} //w/o key, we are adding an expense to the end and then updating each items and updating the contents - with key we will not do this process. We could potentially lose state w/o key
-        />
-      ))}
+      {filteredExpenses.length > 0 ? (
+        filteredExpenses.map((expense, index) => (
+          <ExpenseItem
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+            key={index} //w/o key, we are adding an expense to the end and then updating each items and updating the contents - with key we will not do this process. We could potentially lose state w/o key
+          />
+        ))
+      ) : (
+        <p>No Expenses found for {filteredYear}</p>
+      )}
     </Card>
   );
 };
