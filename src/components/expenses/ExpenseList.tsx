@@ -15,22 +15,24 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
     setFilteredYear(year);
   };
 
+  const filteredExpenses = expenses.filter(
+    (expense) => expense.date.getFullYear() === filteredYear
+  );
+
   return (
     <Card className="expenses">
       <ExpenseFilter
         selectedYear={filteredYear}
         onChangeYear={filterYearHandler}
       />
-      {expenses
-        .filter((expense) => expense.date.getFullYear() === filteredYear)
-        .map((expense, index) => (
-          <ExpenseItem
-            title={expense.title}
-            date={expense.date}
-            amount={expense.amount}
-            key={index}
-          />
-        ))}
+      {filteredExpenses.map((expense, index) => (
+        <ExpenseItem
+          title={expense.title}
+          date={expense.date}
+          amount={expense.amount}
+          key={index} //w/o key, we are adding an expense to the end and then updating each items and updating the contents - with key we will not do this process. We could potentially lose state w/o key
+        />
+      ))}
     </Card>
   );
 };
