@@ -3,6 +3,7 @@ import { ExpenseFilter } from '../filter/ExpenseFilter';
 import { Card } from '../ui/Card';
 import { ExpenseItem, Expense } from './ExpenseItem';
 import './Expenses.css';
+import { ExpensesChart } from './ExpensesChart';
 import { ExpensesList } from './ExpensesList';
 
 interface ExpensesProps {
@@ -24,12 +25,15 @@ export const Expenses: React.FC<ExpensesProps> = ({ expenses }) => {
   let expenseContent = <p>No Expenses found for {filteredYear}</p>;
 
   return (
-    <Card className="expenses">
-      <ExpenseFilter
-        selectedYear={filteredYear}
-        onChangeYear={filterYearHandler}
-      />
-      <ExpensesList filteredYear={filteredYear} expenses={filteredExpenses} />
-    </Card>
+    <div>
+      <Card className="expenses">
+        <ExpenseFilter
+          selectedYear={filteredYear}
+          onChangeYear={filterYearHandler}
+        />
+        <ExpensesChart expenses={filteredExpenses} />
+        <ExpensesList filteredYear={filteredYear} expenses={filteredExpenses} />
+      </Card>
+    </div>
   );
 };
