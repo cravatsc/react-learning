@@ -17,7 +17,10 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
 
   return (
     <Card className="expenses">
-      <ExpenseFilter onChangeYear={filterYearHandler} />
+      <ExpenseFilter
+        selectedYear={filteredYear}
+        onChangeYear={filterYearHandler}
+      />
       {expenses
         .filter((expense) => expense.date.getFullYear() === filteredYear)
         .map((expense, index) => (
