@@ -9,7 +9,11 @@ interface ExpensesListProps {
 // extracting list to own component so we can return the proper tags based on conditionals
 export const ExpensesList: React.FC<ExpensesListProps> = (props) => {
   if (props.expenses.length === 0) {
-    return <p>No Expenses found for {props.filteredYear}</p>;
+    return (
+      <h2 className="expenses-list__fallback">
+        No Expenses found for {props.filteredYear}
+      </h2>
+    );
   }
   return (
     <ul className="expenses-list">
