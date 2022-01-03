@@ -6,6 +6,11 @@ interface ExpenseFilterProps {
   selectedYear: number;
 }
 
+/**
+ * remove all state from child component, state is controlled in the parent,
+ * making the child component stateless or presentational component -
+ * no internal state just there to output data
+ **/
 export const ExpenseFilter: React.FC<ExpenseFilterProps> = (props) => {
   const filterExpenseHandler = (event: any) => {
     props.onChangeYear(+event.target.value);
