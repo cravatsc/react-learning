@@ -16,20 +16,18 @@ export const ExpenseList: React.FC<ExpensesProps> = ({ expenses }) => {
   };
 
   return (
-    <div>
+    <Card className="expenses">
       <ExpenseFilter onChangeYear={filterYearHandler} />
-      <Card className="expenses">
-        {expenses
-          .filter((expense) => expense.date.getFullYear() === filteredYear)
-          .map((expense, index) => (
-            <ExpenseItem
-              title={expense.title}
-              date={expense.date}
-              amount={expense.amount}
-              key={index}
-            />
-          ))}
-      </Card>
-    </div>
+      {expenses
+        .filter((expense) => expense.date.getFullYear() === filteredYear)
+        .map((expense, index) => (
+          <ExpenseItem
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+            key={index}
+          />
+        ))}
+    </Card>
   );
 };
